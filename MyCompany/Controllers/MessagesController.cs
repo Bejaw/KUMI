@@ -4,11 +4,11 @@ using MyCompany.Domain;
 
 namespace MyCompany.Controllers
 {
-    public class ServicesController : Controller
+    public class MessagesController : Controller
     {
         private readonly DataManager dataManager;
 
-        public ServicesController(DataManager dataManager)
+        public MessagesController(DataManager dataManager)
         {
             this.dataManager = dataManager;
         }
@@ -17,11 +17,11 @@ namespace MyCompany.Controllers
         {
             if (id != default)
             {
-                return View("Show", dataManager.ServiceItems.GetServiceItemById(id));
+                return View("Show", dataManager.MessageItems.GetMessageItemById(id));
             }
 
-            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageServices");
-            return View(dataManager.ServiceItems.GetServiceItems());
+            ViewBag.TextField = dataManager.TextFields.GetTextFieldByCodeWord("PageMessages");
+            return View(dataManager.MessageItems.GetMessageItems());
         }
     }
 }

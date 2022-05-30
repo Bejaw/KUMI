@@ -19,8 +19,8 @@ namespace MyCompany.Domain.Entities
         [Display(Name = "Полное описание")]
         public virtual string Text { get; set; }
 
-        [Display(Name = "Титульная картинка")]
-        public virtual string TitleImagePath { get; set; }
+        [Display(Name = "Прилагаемый документ")]
+        public virtual string TitleImagesPath { get; set; }
 
         [Display(Name = "SEO метатег Title")]
         public string MetaTitle { get; set; }

@@ -1,4 +1,4 @@
-﻿@model ServiceItem
+﻿@model MessageItem
 @{
     string strTitle = "Редактировать запись";
     ViewBag.Title = strTitle;
@@ -9,10 +9,10 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <form asp-area="Admin" asp-controller="MessageItems" asp-action="Edit" method="post" enctype="multipart/form-data">
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
-            <input type="hidden" asp-for="TitleImagePath" />
+            <input type="hidden" asp-for="TitleImagesPath" />
 
             <div asp-validation-summary="All"></div>
             <div class="div-box">
@@ -31,11 +31,9 @@
                 <span asp-validation-for="Text"></span>
             </div>
             <div class="div-box">
-                <label asp-for="TitleImagePath"></label>
+                <label asp-for="TitleImagesPath"></label>
                 <input type="file" name="titleImageFile" id="titleImageFile" />
-                <div>
-                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
-                </div>
+
             </div>
             <div class="div-box">
                 <label asp-for="MetaTitle"></label>

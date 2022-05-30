@@ -1,0 +1,60 @@
+﻿
+@model MessageItem
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env 
+@inject Microsoft.AspNetCore.Hosting.IHostingEnvironment HostingEnvironment
+@using System.IO;
+@using System.Web;
+
+
+
+ 
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+}
+
+<div>
+    <h2>
+        @Model.Title
+    </h2>
+    <h2>
+        @Model.Subtitle
+    </h2>
+    <div>
+
+
+      @*  @{
+            string bbb ;
+            string aaa;
+            
+            aaa = HostingEnvironment.ContentRootFileProvider.GetFileInfo("../images/" + @Model.TitleImagesPath).Name;
+            bbb = HostingEnvironment.ContentRootFileProvider.GetFileInfo("~/images/"+@Model.TitleImagesPath).PhysicalPath ;
+
+            if (HostingEnvironment.ContentRootFileProvider.GetFileInfo(HostingEnvironment.ContentRootFileProvider.GetFileInfo("/wwwroot/images/"+@Model.TitleImagesPath).PhysicalPath).Exists)
+            {
+                
+                <i>!!!</i>
+            }
+            {
+                <i>--------</i>
+            }
+
+ }
+
+ aaa - @aaa
+ <br />
+bbb - @bbb
+*@
+
+        @* <img class="img-block" src="~/images/@Model.TitleImagesPath" />*@ 
+        @if (Model.TitleImagesPath!=null)
+       {
+          <a href ="~/docs/@Model.TitleImagesPath">  Ссылка на файл </a> 
+       }
+        
+    </div>
+</div>
+<div>
+    @Html.Raw(Model.Text)
+</div>

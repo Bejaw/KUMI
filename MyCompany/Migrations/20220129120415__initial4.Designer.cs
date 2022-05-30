@@ -10,8 +10,8 @@ using MyCompany.Domain;
 namespace MyCompany.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20200208061350__initial")]
-    partial class _initial
+    [Migration("20220129120415__initial4")]
+    partial class _initial4
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,7 +51,7 @@ namespace MyCompany.Migrations
                         new
                         {
                             Id = "44546e06-8719-4ad8-b88a-f271ae9d6eab",
-                            ConcurrencyStamp = "1c07fb23-ced7-48f9-bf0a-e0df233cd7a3",
+                            ConcurrencyStamp = "5b7edd31-950d-44a4-bed0-5d91ecafa4f0",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -150,13 +150,13 @@ namespace MyCompany.Migrations
                         {
                             Id = "3b62472e-4f66-49fa-a20f-e7685b9565d8",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "091be5bf-9d58-40e6-98a8-e82859894571",
+                            ConcurrencyStamp = "80467c3c-151b-4321-bbf3-86fae130669c",
                             Email = "my@email.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@EMAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAECBA6mt3xGNgyLjwyRhhtI3PI2IBKsm00Y3bAJfjdVrgT0++e45OV5Vh4SLTLPDHEQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPro558DctsAoqFsl2b8PCfs9Gu/uET/uPR1DBVXs0CKD2+SCioJCodpXb0RmJAMvA==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -251,7 +251,7 @@ namespace MyCompany.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("MyCompany.Domain.Entities.ServiceItem", b =>
+            modelBuilder.Entity("MyCompany.Domain.Entities.MessageItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,12 +279,51 @@ namespace MyCompany.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TitleImagePath")
+                    b.Property<string>("TitleImagesPath")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("ServiceItems");
+                    b.ToTable("MessageItems");
+                });
+
+            modelBuilder.Entity("MyCompany.Domain.Entities.ProtocolsItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DocPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subtitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImagesPath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProtocolsItems");
                 });
 
             modelBuilder.Entity("MyCompany.Domain.Entities.TextField", b =>
@@ -318,7 +357,7 @@ namespace MyCompany.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TitleImagePath")
+                    b.Property<string>("TitleImagesPath")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -330,25 +369,33 @@ namespace MyCompany.Migrations
                         {
                             Id = new Guid("63dc8fa6-07ae-4391-8916-e057f71239ce"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2020, 2, 8, 6, 13, 50, 96, DateTimeKind.Utc).AddTicks(9537),
+                            DateAdded = new DateTime(2022, 1, 29, 12, 4, 15, 29, DateTimeKind.Utc).AddTicks(5216),
                             Text = "Содержание заполняется администратором",
                             Title = "Главная"
                         },
                         new
                         {
-                            Id = new Guid("70bf165a-700a-4156-91c0-e83fce0a277f"),
-                            CodeWord = "PageServices",
-                            DateAdded = new DateTime(2020, 2, 8, 6, 13, 50, 97, DateTimeKind.Utc).AddTicks(2218),
+                            Id = new Guid("0643705b-db8f-43a3-98de-359df2f5b6f7"),
+                            CodeWord = "PageProtocols",
+                            DateAdded = new DateTime(2022, 1, 29, 12, 4, 15, 29, DateTimeKind.Utc).AddTicks(6871),
                             Text = "Содержание заполняется администратором",
-                            Title = "Наши услуги"
+                            Title = "Протоколы"
                         },
                         new
                         {
-                            Id = new Guid("4aa76a4c-c59d-409a-84c1-06e6487a137a"),
-                            CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2020, 2, 8, 6, 13, 50, 97, DateTimeKind.Utc).AddTicks(2284),
+                            Id = new Guid("15a11537-7471-48df-86db-4fec77f492c4"),
+                            CodeWord = "PageNPA",
+                            DateAdded = new DateTime(2022, 1, 29, 12, 4, 15, 29, DateTimeKind.Utc).AddTicks(6936),
                             Text = "Содержание заполняется администратором",
-                            Title = "Контакты"
+                            Title = "Нормативные правовые акты"
+                        },
+                        new
+                        {
+                            Id = new Guid("0bc287e6-f3a3-4444-88cf-94cc5049c275"),
+                            CodeWord = "PageMunControl",
+                            DateAdded = new DateTime(2022, 1, 29, 12, 4, 15, 29, DateTimeKind.Utc).AddTicks(6963),
+                            Text = "Содержание заполняется администратором",
+                            Title = "Муниципальный контроль"
                         });
                 });
 

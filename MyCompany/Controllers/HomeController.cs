@@ -17,9 +17,25 @@ namespace MyCompany.Controllers
             return View(dataManager.TextFields.GetTextFieldByCodeWord("PageIndex"));
         }
 
+       /*
         public IActionResult Contacts()
         {
             return View(dataManager.TextFields.GetTextFieldByCodeWord("PageContacts"));
+        }*/
+
+        public IActionResult Protocols()
+        {
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("PageProtocols"));
+        }
+
+        public IActionResult NPA()
+        {
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("PageNPA"));
+        }
+
+        public IActionResult MunControl()
+        {
+            return View(dataManager.TextFields.GetTextFieldByCodeWord("PageMunControl"));
         }
     }
 }

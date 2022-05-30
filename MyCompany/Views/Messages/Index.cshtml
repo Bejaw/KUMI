@@ -1,4 +1,4 @@
-﻿@model IQueryable<ServiceItem>
+﻿@model IQueryable<MessageItem>
 @{
     TextField textField = ViewBag.TextField;
 
@@ -11,13 +11,11 @@
     @if (Model.Any())
     {
         <ul class="big-image-list">
-            @foreach (ServiceItem entity in Model)
+            @foreach (MessageItem entity in Model)
             {
                 <li>
-                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
-                    </a>
-                    <h4>@entity.Title</h4>
+                                        
+                    <a asp-area="" asp-controller="Messages" asp-action="Index" asp-route-id="@entity.Id"><h4>@entity.Title</h4></a>
                     <p>@entity.Subtitle</p>
                 </li>
             }

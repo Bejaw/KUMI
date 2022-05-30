@@ -6,25 +6,25 @@ using MyCompany.Domain.Repositories.Abstract;
 
 namespace MyCompany.Domain.Repositories.EntityFramework
 {
-    public class EFServiceItemsRepository : IServiceItemsRepository
+    public class EFMessageItemsRepository : IMessageItemsRepository
     {
         private readonly AppDbContext context;
-        public EFServiceItemsRepository(AppDbContext context)
+        public EFMessageItemsRepository(AppDbContext context)
         {
             this.context = context;
         }
 
-        public IQueryable<ServiceItem> GetServiceItems()
+        public IQueryable<MessageItem> GetMessageItems()
         {
-            return context.ServiceItems;
+            return context.MessageItems;
         }
 
-        public ServiceItem GetServiceItemById(Guid id)
+        public MessageItem GetMessageItemById(Guid id)
         {
-            return context.ServiceItems.FirstOrDefault(x => x.Id == id);
+            return context.MessageItems.FirstOrDefault(x => x.Id == id);
         }
 
-        public void SaveServiceItem(ServiceItem entity)
+        public void SaveMessageItem(MessageItem entity)
         {
             if (entity.Id == default)
                 context.Entry(entity).State = EntityState.Added;
@@ -33,9 +33,9 @@ namespace MyCompany.Domain.Repositories.EntityFramework
             context.SaveChanges();
         }
 
-        public void DeleteServiceItem(Guid id)
+        public void DeleteMessageItem(Guid id)
         {
-            context.ServiceItems.Remove(new ServiceItem() { Id = id });
+            context.MessageItems.Remove(new MessageItem() { Id = id });
             context.SaveChanges();
         }
     }
